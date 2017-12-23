@@ -6,6 +6,7 @@ import threading
 import speech
 import logging
 #import emotional
+import redis
 
 #Choose file name to load
 fileNameFace = "face-640.jpg"
@@ -18,6 +19,11 @@ tolerance = 0.54 # if tolerance < 0.6 CI not recongnized
 
 if (len(sys.argv) > 1):
     tolerance = sys.argv[1]
+    
+conn = redis.StrictRedis('172.16.69.10')
+
+def publishToRedis(firstname):
+    conn.publish('face-recognition', firstname)
 
 faces = []
 linker = []
@@ -86,7 +92,9 @@ while True:
                     name = data[linker[key]]['name']
                     data[linker[key]]['hello'] = (data[linker[key]]['hello'] + 1) % 70
                     if data[linker[key]]['hello'] == 7:
-                        threading.Thread(target=speech.say2, args=(data[linker[key]]['firstname'],)).start()
+                        #threading.Thread(target=speech.say2, args=(data[linker[key]]['firstname'],)).start()
+                        threading.Thread(target=publishToRedis, args=(data[linker[key]]['firstname'],)).start()
+                        #conn.publish('face-recognition', data[linker[key]]['firstname'])
                     break
             face_names.append(name)
 

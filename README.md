@@ -5,9 +5,9 @@ To add people, simply go in the folder 'people', create a new folder with the na
 
 ## Installation under macOS using homebrew
 
-Install python3 : brew install python3
-Install boost-python : brew install boost-python --with-python3 --without-python
-Install dlib : brew install dlib
+Install python3 : `brew install python3`
+Install boost-python : `brew install boost-python --with-python3 --without-python`
+Install dlib : `brew install dlib`
 
 Install required python3 modules : pip3 install opencv-python face_recognition gTTS
 
@@ -20,10 +20,19 @@ If error :
 cd /usr/local/Cellar/boost-python/1.65.1/lib/
 ln -s libboost_python3-mt.dylib libboost_python-mt.dylib
 
+## Get the suricats face pack 
+
+`cp .env.example .env`
+`nano .env`
+
+Fill the login & password fields
+
+`tools/get-people-data.sh`
+
 ## Launch the program
 
-cd <project_dir>
-python3 start.py
+`cd <project_dir>`
+`python3 start.py`
 
 manifeste netflix
 crapaud fou

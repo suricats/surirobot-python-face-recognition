@@ -11,3 +11,4 @@ def say(firstname):
 
 def say2(firstname):
     os.system("say -v Thomas " + 'Salut ' + firstname + ', comment tu vas ?')
+    
