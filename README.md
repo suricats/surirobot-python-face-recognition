@@ -35,9 +35,7 @@ Fill the login & password fields
 ## Launch the program
 
 `cd <project_dir>`
+
 `python3 start.py`
 
-manifeste netflix
-crapaud fou
-management tribal
-liberte et compagnie
+
