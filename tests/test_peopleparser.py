@@ -13,20 +13,20 @@ class ParsePeopleTest(unittest.TestCase):
 
         res = parsePeople.loadData()
         expected_res = {
-            "CECONI Annie-France": {
-                "name": "Annie-France CECONI",
-                "firstname": "Annie-France",
-                "lastname": "CECONI",
-                "facesPath": [
-                    "./people/CECONI Annie-France/face-640.jpg"
-                ]
-            },
             "BERTRAND Loïc": {
                 "name": "Loïc BERTRAND",
                 "firstname": "Loïc",
                 "lastname": "BERTRAND",
                 "facesPath": [
                     "./people/BERTRAND Loïc/face-640.jpg"
+                ]
+            },
+            "CECONI Annie-France": {
+                "name": "Annie-France CECONI",
+                "firstname": "Annie-France",
+                "lastname": "CECONI",
+                "facesPath": [
+                    "./people/CECONI Annie-France/face-640.jpg"
                 ]
             },
             "DUPONT Jean": {
