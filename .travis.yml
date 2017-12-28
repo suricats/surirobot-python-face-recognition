@@ -1,7 +1,7 @@
 os:
   - osx
 
-language: python
+language: generic
 
 before_install:
     - brew update
