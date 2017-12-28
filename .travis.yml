@@ -1,0 +1,11 @@
+language: python
+
+python:
+    - "3.6"
+
+install:
+    - pip install -r requirements.txt
+    - tests/init_peopleparser.sh
+
+script:
+    - python3 -m unittest tests/parsePeople.test.py

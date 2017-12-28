@@ -1,5 +1,7 @@
 # python-face-recognition
 
+[![Build Status](https://travis-ci.org/suricats/surirobot-python-face-recognition.svg?branch=master)](https://travis-ci.org/suricats/surirobot-python-face-recognition)
+
 Recongize people from the webcam using a local library of people.
 To add people, simply go in the folder 'people', create a new folder with the name of the person and drop a picture of it, named face.jpg
 
@@ -11,7 +13,7 @@ Install boost-python : `brew install boost-python --with-python3 --without-pytho
 
 Install dlib : `brew install dlib`
 
-Install required python3 modules : `pip3 install opencv-python face_recognition gTTS`
+Install required python3 modules : `pip3 install -r requirements.txt`
 
 If error :
 		ImportError: dlopen(/usr/local/lib/python3.6/site-packages/dlib/dlib.so, 

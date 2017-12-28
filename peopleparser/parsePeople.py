@@ -2,7 +2,7 @@ import os
 import json
 
 
-def loadData(fileNameFace = "face-640.jpg"):
+def loadData(fileNameFace="face-640.jpg"):
     baseDir = './people'
     people = os.listdir(baseDir)
     data = {}
@@ -10,7 +10,7 @@ def loadData(fileNameFace = "face-640.jpg"):
     for person in people:
         if os.path.isdir(baseDir + '/' + person):
             if os.path.isfile(baseDir + '/' + person + '/info.json'):
-                #Set encoding to utf-8 to open file with french characters
+                # Set encoding to utf-8 to open file with french characters
                 data[person] = json.load(open(baseDir + '/' + person + '/info.json', encoding='utf-8'))
             else:
                 name_tmp = person.split()

@@ -1,5 +1,5 @@
 import sys
-import parsePeople
+from peopleparser import parsePeople
 import face_recognition
 import cv2
 import threading
