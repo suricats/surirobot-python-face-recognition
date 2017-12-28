@@ -3,9 +3,6 @@ os:
 
 language: python
 
-python:
-    - "3.6"
-
 before_install:
     - brew update
     - brew install python3
