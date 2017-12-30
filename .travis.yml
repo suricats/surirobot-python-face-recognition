@@ -1,13 +1,15 @@
-os:
-  - osx
+dist: xenial
 
-language: generic
+sudo: required
+
+language: python
+
+python:
+  - "3.6"
 
 before_install:
-    - brew update
-    - brew install python3
-    - brew install boost-python --with-python3 --without-python
-    - brew install dlib
+- sudo apt-get -qq update
+- sudo apt-get install -qq cmake python-numpy python-scipy libboost-python-dev
 
 install:
     - pip3 install -r requirements.txt
