@@ -39,7 +39,7 @@ class ParsePeopleTest(unittest.TestCase):
             }
         }
 
-        compare = (json.dumps(res, ensure_ascii=False) == json.dumps(expected_res, ensure_ascii=False))
+        compare = (json.dumps(res, sort_keys=True) == json.dumps(expected_res, sort_keys=True))
 
         if not compare:
             print(json.dumps(res) + "\n\n is not equals to \n\n" + json.dumps(expected_res))
