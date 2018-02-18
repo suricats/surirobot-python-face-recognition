@@ -7,37 +7,35 @@ To add people, simply go in the folder 'people', create a new folder with the na
 
 ## Installation under macOS using homebrew
 
-Install python3 : `brew install python3`
+Install libs: `brew install python3 boost-python3 dlib`
 
-Install boost-python : `brew install boost-python --with-python3 --without-python`
+Install required python3 modules: `pip3 install -r requirements.txt`
 
-Install dlib : `brew install dlib`
+Install the lastest version of python3 dlib:
 
-Install required python3 modules : `pip3 install -r requirements.txt`
+```bash
+git clone https://github.com/davisking/dlib.git
+cd dlib
+python3 setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
+cd .. && rm -rf dlib
+```
 
-If error :
-		ImportError: dlopen(/usr/local/lib/python3.6/site-packages/dlib/dlib.so, 
-		2): Library not loaded: /usr/local/opt/boost-python/lib/libboost_python-mt.dylib   
-		Referenced from: /usr/local/lib/python3.6/site-packages/dlib/dlib.so   
-		Reason: image not found
-		
-cd /usr/local/Cellar/boost-python/1.65.1/lib/
-ln -s libboost_python3-mt.dylib libboost_python-mt.dylib
 
-## Get the suricats face pack 
+## Get the suricats face pack
 
-`cp .env.example .env`
-
-`nano .env`
+```bash
+cp .env.example .env
+nano .env
+```
 
 Fill the login & password fields
 
-`tools/get-people-data.sh`
+```bash
+tools/get-people-data.sh
+```
 
 ## Launch the program
 
 `cd <project_dir>`
 
 `python3 start.py`
-
-

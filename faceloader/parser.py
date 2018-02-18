@@ -2,7 +2,7 @@ import os
 import json
 
 
-def loadData(fileNameFace="face-640.jpg"):
+def parse_people(fileNameFace="face-640.jpg"):
     baseDir = './people'
     people = os.listdir(baseDir)
     data = {}

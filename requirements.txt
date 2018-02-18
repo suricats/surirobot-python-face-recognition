@@ -1,3 +1,4 @@
+python-dotenv
+importlib
 face_recognition
 opencv-python
-gTTS
