@@ -2,3 +2,6 @@ python-dotenv
 face_recognition
 opencv-python
 redis
+flask
+flask_restful
+flask_sqlalchemy
