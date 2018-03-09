@@ -13,5 +13,5 @@ thread = FaceRecognition()
 thread.start()
 
 # Launch Flask
-# from management import app
-# app.run(debug=True)
+from management import app
+app.run(debug=False)
