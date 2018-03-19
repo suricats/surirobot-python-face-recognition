@@ -1,15 +1,20 @@
 import face_recognition
+import logging
 
 import shared as s
 
 
 def add_picture(picture):
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
+
     if picture.user.id in s.data:
         pass
     else:
         s.data[picture.user.id] = {'name': picture.user.firstname + ' ' + picture.user.lastname, 'firstname': picture.user.firstname, 'lastname': picture.user.lastname}
 
     img = face_recognition.load_image_file(picture.path)
+    logger.info("        Face encoding .....")
     face = face_recognition.face_encodings(img, None, 10)[0]
 
     s.faces.append(face)
