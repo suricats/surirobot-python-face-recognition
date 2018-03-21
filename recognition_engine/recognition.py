@@ -45,7 +45,7 @@ class FaceRecognition(Thread):
 
                     for key, value in enumerate(match):
                         if value:
-                            name = s.data[s.linker[key]]['name']
+                            name = str(s.linker[key]) + '.' + s.data[s.linker[key]]['name']
                             break
                     face_names.append(name)
 

@@ -14,9 +14,10 @@ def load_faces():
 
     for user in users:
         pictures = user.pictures
-        picture = pictures[0]
+        if pictures:
+            picture = pictures[0]
 
-        name = user.firstname + ' ' + user.lastname
-        logger.info("Load Face  ..... {}".format(name))
+            name = user.firstname + ' ' + user.lastname
+            logger.info("Load Face  ..... {}".format(name))
 
-        add_picture(picture)
+            add_picture(picture)
