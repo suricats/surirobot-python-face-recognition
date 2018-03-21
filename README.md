@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/suricats/surirobot-python-face-recognition.svg?branch=master)](https://travis-ci.org/suricats/surirobot-python-face-recognition)
 
-Recongize people from the webcam using a local library of people.
-To add people, simply go in the folder 'people', create a new folder with the name of the person and drop a picture of it, named face.jpg
+Recognize people from the webcam using a local library of people.
+Add people using the rest api ! 
 
 ## Installation under macOS using homebrew
 
