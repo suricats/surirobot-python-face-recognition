@@ -2,18 +2,41 @@ from threading import Thread
 import os
 import cv2
 import face_recognition
-import adapters
 import shared as s
+from .redis import RedisAdapter
+import logging
 
 
 class FaceRecognition(Thread):
     def __init__(self):
         Thread.__init__(self)
-        # Initialize adapters
-        self.com = adapters.Communicator(['redis'])
+
+        self.redis = RedisAdapter()
+        self.buffer = {
+            'id': -1,
+            'count': 0,
+        }
+
+    def addToBuffer(self, faces):
+        if faces:
+            id = faces[0]
+        else:
+            id = -1
+
+        if id == self.buffer['id']:
+            self.buffer['count'] = self.buffer['count'] + 1
+
+            if self.buffer['id'] == -1:
+                if self.buffer['count'] == 30:
+                    self.redis.process(id)
+            else:
+                if self.buffer['count'] == 5:
+                    self.redis.process(id)
+        else:
+            self.buffer['id'] = id
+            self.buffer['count'] = 0
 
     def run(self):
-
         video_capture = cv2.VideoCapture(0)
 
         # Initialize some variables
@@ -41,16 +64,16 @@ class FaceRecognition(Thread):
                 for face_encoding in face_encodings:
                     # See if the face is a match for the known face(s)
                     match = face_recognition.compare_faces(s.faces, face_encoding, tolerance)
-                    name = "Unknown"
+                    id = -1
 
                     for key, value in enumerate(match):
                         if value:
-                            name = str(s.linker[key]) + '.' + s.data[s.linker[key]]['name']
+                            id = s.linker[key]
                             break
-                    face_names.append(name)
+                    face_names.append(id)
 
             process_this_frame = not process_this_frame
-            self.com.process([frame, face_locations, face_names])
+            self.addToBuffer(face_names)
 
             # Hit 'q' on the keyboard to quit!
             if cv2.waitKey(1) & 0xFF == ord('q'):

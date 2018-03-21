@@ -29,3 +29,10 @@ def remove_picture(picture):
     key = s.linker.index(picture.user.id)
     del s.faces[key]
     del s.linker[key]
+
+
+def id_to_name(id):
+    if id == -1:
+        return 'Unknown'
+
+    return s.data[id]['name']
